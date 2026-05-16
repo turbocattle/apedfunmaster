@@ -1,0 +1,14 @@
+.bonding-curve-chart {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.bonding-curve-chart svg {
+  width: 100%;
+  height: auto;
+}
+
+.current-dot {
+  filter: drop-shadow(0 0 4px var(--cyan));
+}

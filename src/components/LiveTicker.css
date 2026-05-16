@@ -1,0 +1,106 @@
+.live-ticker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--ticker-h);
+  z-index: 1001;
+  background: #030303;
+  border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.ticker-badge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 16px;
+  height: 100%;
+  background: rgba(0, 255, 136, 0.07);
+  border-right: 1px solid rgba(0, 255, 136, 0.15);
+  font-size: 0.58rem;
+  font-weight: 800;
+  color: var(--green);
+  letter-spacing: 0.2em;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.ticker-live-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--green);
+  flex-shrink: 0;
+  animation: ticker-blink 1.2s ease-in-out infinite;
+}
+
+@keyframes ticker-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+.ticker-overflow {
+  flex: 1;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  mask-image: linear-gradient(90deg, transparent 0%, black 3%, black 97%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 3%, black 97%, transparent 100%);
+}
+
+.ticker-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: ticker-scroll 55s linear infinite;
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 4px;
+  font-size: 0.74rem;
+}
+
+.ticker-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ticker-buy  .ticker-dot { background: var(--green); }
+.ticker-sell .ticker-dot { background: var(--red); }
+
+.ticker-wallet { color: var(--text-muted); font-size: 0.7rem; }
+.ticker-verb   { color: var(--text-secondary); }
+.ticker-of     { color: var(--text-muted); }
+
+.ticker-buy  .ticker-sol { color: var(--green); font-weight: 600; }
+.ticker-sell .ticker-sol { color: var(--red);   font-weight: 600; }
+
+.ticker-sep {
+  display: inline-block;
+  width: 1px;
+  height: 12px;
+  background: var(--border-color);
+  margin: 0 14px;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .live-ticker {
+    display: none;
+  }
+}

@@ -1,0 +1,210 @@
+.navbar {
+  position: fixed;
+  top: var(--ticker-h);
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--nav-h);
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* ── Left: logo + tabs ── */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.navbar-logo-monkey   { height: 36px; width: auto; object-fit: contain; flex-shrink: 0; }
+.navbar-logo-wordmark { height: 22px; width: auto; object-fit: contain; flex-shrink: 0; margin-left: -2px; }
+
+.navbar-page-tabs {
+  display: flex;
+  gap: 2px;
+  margin-left: 8px;
+}
+
+.navbar-tab {
+  display: flex;
+  align-items: center;
+  padding: 7px 14px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  border-radius: var(--radius);
+  transition: all var(--transition);
+  border: 1px solid transparent;
+  position: relative;
+}
+
+.navbar-tab:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.navbar-tab.active {
+  color: var(--text-bright);
+  background: var(--bg-card);
+  border-color: var(--border-color);
+}
+
+/* ── Right: menu ── */
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+
+/* Drop countdown pill */
+.navbar-drop-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: rgba(0, 255, 136, 0.06);
+  border: 1px solid rgba(0, 255, 136, 0.14);
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.navbar-drop-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--green);
+  flex-shrink: 0;
+  animation: global-pulse 2s ease-in-out infinite;
+}
+
+.navbar-drop-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.navbar-drop-time {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 2px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 7px 14px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  border-radius: var(--radius);
+  transition: all var(--transition);
+  border: 1px solid transparent;
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.nav-link.active {
+  color: var(--text-bright);
+  border-color: var(--border-color);
+  background: var(--bg-card);
+}
+
+.navbar-wallet { flex-shrink: 0; }
+
+/* ── Hamburger ── */
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+}
+
+.toggle-bar {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--text-primary);
+  transition: all var(--transition);
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .navbar-inner { padding: 0 16px; }
+
+  .navbar-page-tabs { display: none; }
+  .navbar-toggle    { display: flex; }
+
+  .navbar-menu {
+    position: fixed;
+    top: var(--page-offset);
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color);
+    flex-direction: column;
+    padding: 16px;
+    gap: 16px;
+    transform: translateY(-110%);
+    transition: transform 220ms ease;
+    z-index: 999;
+  }
+
+  .navbar-menu.open { transform: translateY(0); }
+
+  .navbar-drop-pill { align-self: flex-start; }
+
+  .navbar-links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-link { padding: 10px 12px; }
+
+  .navbar-wallet { width: 100%; }
+  .navbar-wallet .wallet-adapter-button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}

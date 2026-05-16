@@ -1,0 +1,172 @@
+/* ============================================
+   aped.fun — global theme
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  /* Core palette */
+  --bg-primary:    #000000;
+  --bg-secondary:  #080808;
+  --bg-card:       #0e0e0e;
+  --bg-input:      #090909;
+  --bg-hover:      #161616;
+
+  /* Accent colors */
+  --green:  #00ff88;
+  --red:    #ff3366;
+  --cyan:   #ffffff;
+  --yellow: #ffd700;
+  --purple: #b347ff;
+
+  /* Text */
+  --text-primary:   #d8d8d8;
+  --text-secondary: #808080;
+  --text-muted:     #4a4a4a;
+  --text-bright:    #ffffff;
+
+  /* Borders */
+  --border-color:  #1e1e1e;
+  --border-active: #ffffff;
+
+  /* Shape */
+  --radius:    6px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+  --radius-full: 999px;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+  /* Motion */
+  --transition: 150ms ease;
+  --transition-md: 250ms ease;
+
+  /* Layout — ticker + navbar heights */
+  --ticker-h:    34px;
+  --nav-h:       60px;
+  --page-offset: 94px;  /* ticker-h + nav-h */
+}
+
+/* On mobile the ticker is hidden */
+@media (max-width: 768px) {
+  :root {
+    --ticker-h:    0px;
+    --page-offset: 60px;
+  }
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 14px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--cyan);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover { color: var(--green); }
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+input, textarea, select {
+  font-family: var(--font-sans);
+  outline: none;
+}
+
+img { max-width: 100%; display: block; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar        { width: 5px; height: 5px; }
+::-webkit-scrollbar-track  { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb  { background: var(--border-color); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #333; }
+
+/* ── Selection ── */
+::selection { background: var(--text-bright); color: var(--bg-primary); }
+
+/* ── Layout ── */
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.app-main {
+  padding-top: var(--page-offset);
+  min-height: calc(100vh - var(--page-offset));
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 16px; }
+}
+
+/* ── Shared animations ── */
+@keyframes global-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4); }
+  50%       { opacity: 0.6; box-shadow: 0 0 0 4px rgba(0, 255, 136, 0); }
+}
+
+/* ── Wallet adapter overrides ── */
+.wallet-adapter-button {
+  font-family: var(--font-sans) !important;
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius) !important;
+  font-size: 0.85rem !important;
+  height: 36px !important;
+  transition: all var(--transition) !important;
+}
+
+.wallet-adapter-button:hover {
+  background-color: var(--bg-hover) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.wallet-adapter-button-trigger {
+  background-color: #fff !important;
+  color: #000 !important;
+  border-color: #fff !important;
+  font-weight: 700 !important;
+}
+
+.wallet-adapter-button-trigger:hover {
+  background-color: #e8e8e8 !important;
+  border-color: #e8e8e8 !important;
+}
+
+.wallet-adapter-modal-wrapper {
+  font-family: var(--font-sans) !important;
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.wallet-adapter-modal-title {
+  font-family: var(--font-sans) !important;
+  color: var(--text-bright) !important;
+}
